@@ -1,0 +1,203 @@
+<dashboard version="2" theme="dark"><label>Windows Persistence Investigation</label><description>MOHAMEDAHMED | Native Windows evidence | UTC</description><definition><![CDATA[{
+  "title": "Windows Persistence Investigation",
+  "description": "MOHAMEDAHMED | Native Windows evidence | UTC",
+  "inputs": {},
+  "defaults": {},
+  "visualizations": {
+    "panel_0": {
+      "type": "splunk.singlevalue",
+      "options": {
+        "backgroundColor": "#20272B",
+        "majorColor": "#53A051",
+        "trendDisplay": "off",
+        "showSparkline": false,
+        "numberPrecision": 0
+      },
+      "title": "Host events",
+      "dataSources": {
+        "primary": "ds_panel_0"
+      }
+    },
+    "panel_1": {
+      "type": "splunk.singlevalue",
+      "options": {
+        "backgroundColor": "#20272B",
+        "majorColor": "#53A051",
+        "trendDisplay": "off",
+        "showSparkline": false,
+        "numberPrecision": 0
+      },
+      "title": "Marker process launches",
+      "dataSources": {
+        "primary": "ds_panel_1"
+      }
+    },
+    "panel_2": {
+      "type": "splunk.singlevalue",
+      "options": {
+        "backgroundColor": "#20272B",
+        "majorColor": "#53A051",
+        "trendDisplay": "off",
+        "showSparkline": false,
+        "numberPrecision": 0
+      },
+      "title": "Task registration events",
+      "dataSources": {
+        "primary": "ds_panel_2"
+      }
+    },
+    "panel_3": {
+      "type": "splunk.table",
+      "options": {
+        "backgroundColor": "#20272B",
+        "count": 20
+      },
+      "title": "Process execution across the persistence cases",
+      "dataSources": {
+        "primary": "ds_panel_3"
+      }
+    },
+    "panel_4": {
+      "type": "splunk.table",
+      "options": {
+        "backgroundColor": "#20272B",
+        "count": 20
+      },
+      "title": "WMI filter, consumer and binding lifecycle",
+      "dataSources": {
+        "primary": "ds_panel_4"
+      }
+    }
+  },
+  "dataSources": {
+    "ds_panel_0": {
+      "type": "ds.search",
+      "name": "Host events",
+      "options": {
+        "query": "index=lab_persistence computer=\"MOHAMEDAHMED\" | stats count",
+        "queryParameters": {
+          "earliest": "0",
+          "latest": "now"
+        }
+      }
+    },
+    "ds_panel_1": {
+      "type": "ds.search",
+      "name": "Marker process launches",
+      "options": {
+        "query": "index=lab_persistence computer=\"MOHAMEDAHMED\" provider=\"Microsoft-Windows-Sysmon\" event_id=1 data.CommandLine=\"*Write-Marker.ps1*\" | stats count",
+        "queryParameters": {
+          "earliest": "0",
+          "latest": "now"
+        }
+      }
+    },
+    "ds_panel_2": {
+      "type": "ds.search",
+      "name": "Task registration events",
+      "options": {
+        "query": "index=lab_persistence computer=\"MOHAMEDAHMED\" provider=\"Microsoft-Windows-Security-Auditing\" event_id=4698 | stats count",
+        "queryParameters": {
+          "earliest": "0",
+          "latest": "now"
+        }
+      }
+    },
+    "ds_panel_3": {
+      "type": "ds.search",
+      "name": "Process execution across the persistence cases",
+      "options": {
+        "query": "index=lab_persistence computer=\"MOHAMEDAHMED\" provider=\"Microsoft-Windows-Sysmon\" event_id=1 data.CommandLine=\"*Write-Marker.ps1*\" | rex field=data.CommandLine \"-Case (?<Case>\\w+)\" | eval UTC=substr(utc,12,12), User='data.User', Parent='data.ParentImage', PID='data.ProcessId' | table UTC Case User Parent PID | sort 0 UTC",
+        "queryParameters": {
+          "earliest": "0",
+          "latest": "now"
+        }
+      }
+    },
+    "ds_panel_4": {
+      "type": "ds.search",
+      "name": "WMI filter, consumer and binding lifecycle",
+      "options": {
+        "query": "index=lab_persistence computer=\"MOHAMEDAHMED\" provider=\"Microsoft-Windows-Sysmon\" event_id IN (19,20,21) \"SOC-Lab-WMI\" | eval UTC=substr(utc,12,12), Operation='data.Operation', EventID=event_id, Object=coalesce('data.Name','data.Filter','data.Consumer'), User='data.User' | table UTC Operation EventID Object User | sort 0 UTC",
+        "queryParameters": {
+          "earliest": "0",
+          "latest": "now"
+        }
+      }
+    }
+  },
+  "layout": {
+    "globalInputs": [],
+    "layoutDefinitions": {
+      "layout_1": {
+        "type": "absolute",
+        "options": {
+          "width": 1440,
+          "height": 1004,
+          "display": "auto-scale",
+          "backgroundColor": "#171D21"
+        },
+        "structure": [
+          {
+            "item": "panel_0",
+            "type": "block",
+            "position": {
+              "x": 24,
+              "y": 24,
+              "w": 448,
+              "h": 150
+            }
+          },
+          {
+            "item": "panel_1",
+            "type": "block",
+            "position": {
+              "x": 496,
+              "y": 24,
+              "w": 448,
+              "h": 150
+            }
+          },
+          {
+            "item": "panel_2",
+            "type": "block",
+            "position": {
+              "x": 968,
+              "y": 24,
+              "w": 448,
+              "h": 150
+            }
+          },
+          {
+            "item": "panel_3",
+            "type": "block",
+            "position": {
+              "x": 24,
+              "y": 198,
+              "w": 1392,
+              "h": 380
+            }
+          },
+          {
+            "item": "panel_4",
+            "type": "block",
+            "position": {
+              "x": 24,
+              "y": 602,
+              "w": 1392,
+              "h": 380
+            }
+          }
+        ]
+      }
+    },
+    "tabs": {
+      "items": [
+        {
+          "label": "Investigation",
+          "layoutId": "layout_1"
+        }
+      ]
+    }
+  }
+}]]></definition></dashboard>

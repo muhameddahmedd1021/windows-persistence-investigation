@@ -1,0 +1,4 @@
+index=lab_persistence computer="MOHAMEDAHMED" provider="Microsoft-Windows-Sysmon" event_id IN (19,20,21)
+| search "SOC-Lab-WMI"
+| table _time computer event_id data.Operation data.User data.Name data.Query data.Destination data.Consumer data.Filter
+| sort 0 _time

@@ -1,0 +1,4 @@
+{
+    "Filter":  "__EventFilter.Name=\"SCM Event Log Filter\"",
+    "Consumer":  "NTEventLogEventConsumer.Name=\"SCM Event Log Consumer\""
+}

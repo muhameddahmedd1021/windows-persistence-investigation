@@ -1,0 +1,4 @@
+index=lab_persistence computer="MOHAMEDAHMED" provider="Microsoft-Windows-Sysmon" event_id=11
+| search data.TargetFilename="*SocPersistenceLab*markers*"
+| table _time computer data.ProcessGuid data.ProcessId data.Image data.TargetFilename
+| sort 0 _time

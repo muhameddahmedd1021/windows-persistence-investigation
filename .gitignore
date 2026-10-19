@@ -1,0 +1,8 @@
+.DS_Store
+Thumbs.db
+*.iso
+*.qcow2
+*.vmdk
+*.vdi
+*.log
+__pycache__/

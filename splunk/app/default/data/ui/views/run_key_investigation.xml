@@ -1,0 +1,98 @@
+<dashboard version="2" theme="dark"><label>Registry Run Key Investigation</label><description>SOC-Lab-Run | Registry modification and logon execution | UTC</description><definition><![CDATA[{
+  "title": "Registry Run Key Investigation",
+  "description": "SOC-Lab-Run | Registry modification and logon execution | UTC",
+  "inputs": {},
+  "defaults": {},
+  "visualizations": {
+    "panel_0": {
+      "type": "splunk.table",
+      "options": {
+        "backgroundColor": "#20272B",
+        "count": 20
+      },
+      "title": "Run-related value changes",
+      "dataSources": {
+        "primary": "ds_panel_0"
+      }
+    },
+    "panel_1": {
+      "type": "splunk.table",
+      "options": {
+        "backgroundColor": "#20272B",
+        "count": 20
+      },
+      "title": "Execution from the Registry case",
+      "dataSources": {
+        "primary": "ds_panel_1"
+      }
+    }
+  },
+  "dataSources": {
+    "ds_panel_0": {
+      "type": "ds.search",
+      "name": "Run-related value changes",
+      "options": {
+        "query": "index=lab_persistence computer=\"MOHAMEDAHMED\" provider=\"Microsoft-Windows-Sysmon\" event_id=13 data.TargetObject=\"*SOC-Lab-Run*\" | eval UTC=substr(utc,12,12), Target='data.TargetObject', Data='data.Details' | table UTC Target Data | sort 0 UTC",
+        "queryParameters": {
+          "earliest": "0",
+          "latest": "now"
+        }
+      }
+    },
+    "ds_panel_1": {
+      "type": "ds.search",
+      "name": "Execution from the Registry case",
+      "options": {
+        "query": "index=lab_persistence computer=\"MOHAMEDAHMED\" provider=\"Microsoft-Windows-Sysmon\" event_id=1 data.CommandLine=\"*Write-Marker.ps1*\" | rex field=data.CommandLine \"-Case (?<Case>\\w+)\" | eval UTC=substr(utc,12,12), User='data.User', Parent='data.ParentImage', PID='data.ProcessId' | search Case=Registry | table UTC Case User Parent PID | sort 0 UTC",
+        "queryParameters": {
+          "earliest": "0",
+          "latest": "now"
+        }
+      }
+    }
+  },
+  "layout": {
+    "globalInputs": [],
+    "layoutDefinitions": {
+      "layout_1": {
+        "type": "absolute",
+        "options": {
+          "width": 1440,
+          "height": 674,
+          "display": "auto-scale",
+          "backgroundColor": "#171D21"
+        },
+        "structure": [
+          {
+            "item": "panel_0",
+            "type": "block",
+            "position": {
+              "x": 24,
+              "y": 24,
+              "w": 1392,
+              "h": 360
+            }
+          },
+          {
+            "item": "panel_1",
+            "type": "block",
+            "position": {
+              "x": 24,
+              "y": 408,
+              "w": 1392,
+              "h": 240
+            }
+          }
+        ]
+      }
+    },
+    "tabs": {
+      "items": [
+        {
+          "label": "Investigation",
+          "layoutId": "layout_1"
+        }
+      ]
+    }
+  }
+}]]></definition></dashboard>

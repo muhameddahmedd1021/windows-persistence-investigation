@@ -1,0 +1,4 @@
+index=lab_persistence computer="MOHAMEDAHMED" provider="Microsoft-Windows-Sysmon" event_id=1
+| search data.CommandLine="*Write-Marker.ps1*"
+| table _time computer data.User data.ProcessGuid data.ProcessId data.ParentProcessGuid data.ParentImage data.CommandLine
+| sort 0 _time

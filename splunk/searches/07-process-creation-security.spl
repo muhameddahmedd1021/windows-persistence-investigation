@@ -1,0 +1,4 @@
+index=lab_persistence computer="MOHAMEDAHMED" provider="Microsoft-Windows-Security-Auditing" event_id=4688
+| search data.CommandLine="*Write-Marker.ps1*"
+| table _time computer data.SubjectUserName data.SubjectLogonId data.NewProcessName data.NewProcessId data.ProcessId data.ParentProcessName data.CommandLine
+| sort 0 _time

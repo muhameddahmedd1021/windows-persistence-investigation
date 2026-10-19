@@ -1,0 +1,5 @@
+{
+    "Name":  "SOC-Lab-WMI",
+    "Query":  "SELECT * FROM Win32_ProcessStartTrace WHERE ProcessName = \u0027whoami.exe\u0027",
+    "EventNamespace":  "root\\cimv2"
+}

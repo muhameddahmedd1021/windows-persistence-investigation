@@ -1,0 +1,4 @@
+index=lab_persistence computer="MOHAMEDAHMED" provider="Microsoft-Windows-Security-Auditing" event_id=4698
+| eval action_xml=lower('data.TaskContent')
+| where match(action_xml, "(?i)users.{1,2}public.{1,2}soc-lab")
+| table _time computer data.SubjectUserName data.TaskName data.TaskContent

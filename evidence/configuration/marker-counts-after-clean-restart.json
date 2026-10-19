@@ -1,0 +1,18 @@
+[
+    {
+        "case":  "Control",
+        "count":  2
+    },
+    {
+        "case":  "Registry",
+        "count":  1
+    },
+    {
+        "case":  "Task",
+        "count":  2
+    },
+    {
+        "case":  "WMI",
+        "count":  2
+    }
+]

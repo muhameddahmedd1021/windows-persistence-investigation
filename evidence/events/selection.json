@@ -1,0 +1,222 @@
+{
+  "selection": "Native MOHAMEDAHMED events matching the registration, marker execution and marker-file searches in this repository.",
+  "records": 30,
+  "source_collection_records": 2314,
+  "investigation_host_records": 2281,
+  "source_files": {
+    "Security.xml": "22ef3065f03c7e69a2a7b41a44b135d9825efe24cc06e8c65f7274bbee1adb88",
+    "Microsoft-Windows-Sysmon_Operational.xml": "99dc7253a2219422ecbbf0aafc9a656adf41271d54fb55ce785532fbffcae799"
+  },
+  "events": [
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Security",
+      "record_id": 742,
+      "source_file": "Security.xml",
+      "source_element_sha256": "32d394cea19ea2ffde3af92450b7c1a6f1706a346059e072c506b0e2cfe0a670"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Security",
+      "record_id": 743,
+      "source_file": "Security.xml",
+      "source_element_sha256": "6c27473ee5be94bd8e463c97bf5cf3fe556480146e82de09b88a095244447e40"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Security",
+      "record_id": 794,
+      "source_file": "Security.xml",
+      "source_element_sha256": "bac16dce2f0baf57094de1b484c6d1b2aaaf7b5ac361e7e7fe97f6a0ad40332c"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Security",
+      "record_id": 796,
+      "source_file": "Security.xml",
+      "source_element_sha256": "88370002efee4d31c619b212f0389ae3341ad26ac208fab595ced6ec1506835a"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Security",
+      "record_id": 800,
+      "source_file": "Security.xml",
+      "source_element_sha256": "2645b60b609af56e52095f231fd25bf4e1e7bfed4a98cc627a279458a44630f6"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Security",
+      "record_id": 1052,
+      "source_file": "Security.xml",
+      "source_element_sha256": "22072adba2ffb16dc726611362bd95a2a5dc3a4f2d8172a2ccaf1f0c3bff5266"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Security",
+      "record_id": 1054,
+      "source_file": "Security.xml",
+      "source_element_sha256": "ea4d16227fd170ce5a0ab11c970f98ccade8e3b4162707c9784b0810544ece7a"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Security",
+      "record_id": 1119,
+      "source_file": "Security.xml",
+      "source_element_sha256": "c871bd1e5ee2ae4df6d2b9d33620ce203c0c4856135c0d45a19d849578a48b2a"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Security",
+      "record_id": 1171,
+      "source_file": "Security.xml",
+      "source_element_sha256": "bebb0b6d1f9a8748c73be9ac22ca7183f274cf96c57cdac82c741317be92d8ed"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Security",
+      "record_id": 1250,
+      "source_file": "Security.xml",
+      "source_element_sha256": "3f641e823b9f466fb5eaa7d5f42ec52b90a70a9faf6e74071d4c382efa947b7f"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Security",
+      "record_id": 1555,
+      "source_file": "Security.xml",
+      "source_element_sha256": "678b6f3c54d938ec52790d85403f0f35240c272158a8b7d5ef9c93393a400804"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 220,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "5c981fa5e23ab5e8ea25cfcdeb2439ad6bfb0b99fd526cc5e0c2e6c8ebec579a"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 221,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "2a181224e83a4e01924f3c3b3f382ecbdf626791aa20fa078730558c681c991d"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 222,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "cd381fad32bc5f58825d1f196526b2c0fe55f5a51bc4d01e1272506496643bd2"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 223,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "84f710d12f52d350951e2464e13440c54a9f6019fdea5c6ac4aee5417fab9546"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 230,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "3f8fe344ebc09816136567274c5cd5e4b6b875c727949f2fcaaf30559bdbb5c1"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 241,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "15604bd04589f7d4cc9ee525c569f10881b62acf48b72afdc4fd5156aa54d96b"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 242,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "66a4e3e3bf9920aaa2967b1f5480ad82f89ab61c98b347a634cb00cff6143aa0"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 249,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "b8a35548f88c1e52e422d63132e9141f19f0232360af88eb028e156fbb8a5dd1"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 251,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "eabf3bae8b36362b36973f3a01bf6ddd6e8e354d6018ab21c5669cde83016482"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 255,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "d0d3fb9103730c800dd832dd3b28b72a3e033279be6c90192bce5e9b81a30c5e"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 258,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "9f481d754cc95c14171a20772e84782f66730a2f93d4616dcb780fb653eca69f"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 480,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "58af4118468140d461bb59b4f93190e14c3fddf1990085016c6a7394b46fc45e"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 484,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "95e931aa0df0b7b0db218c452f030a16e9949eadd7cb03f730f2a8ebcf6d5538"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 523,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "77c204b21e563577c6d6f924c890d8d19769901e4a72fea129f42cc8cce9e5af"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 539,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "276b7411a98513e4250624be20aa23f12853654a8220578edc0acce495b74f49"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 554,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "92ad2d6e953f167b58577008e442536a20b8fa836c6e831bf7dbaa33043c1145"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 616,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "f285a65fc582d4e337d253629e3ff5900186a62fa3a9709622cf1029a37c0569"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 617,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "3800df4447d0018852a327613baa92770381900fc50b9e92e50198964e1d2e32"
+    },
+    {
+      "computer": "MOHAMEDAHMED",
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 831,
+      "source_file": "Microsoft-Windows-Sysmon_Operational.xml",
+      "source_element_sha256": "4f21d749346de058f8135bf65d206fc61af5e7df0fcc39a1ebded6d749f21f8d"
+    }
+  ]
+}

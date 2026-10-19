@@ -1,0 +1,98 @@
+<dashboard version="2" theme="dark"><label>Scheduled Task Investigation</label><description>SOC-Lab-Task and SOC-Lab-Control | Registration and execution | UTC</description><definition><![CDATA[{
+  "title": "Scheduled Task Investigation",
+  "description": "SOC-Lab-Task and SOC-Lab-Control | Registration and execution | UTC",
+  "inputs": {},
+  "defaults": {},
+  "visualizations": {
+    "panel_0": {
+      "type": "splunk.table",
+      "options": {
+        "backgroundColor": "#20272B",
+        "count": 20
+      },
+      "title": "Task registration records",
+      "dataSources": {
+        "primary": "ds_panel_0"
+      }
+    },
+    "panel_1": {
+      "type": "splunk.table",
+      "options": {
+        "backgroundColor": "#20272B",
+        "count": 20
+      },
+      "title": "Task and control executions",
+      "dataSources": {
+        "primary": "ds_panel_1"
+      }
+    }
+  },
+  "dataSources": {
+    "ds_panel_0": {
+      "type": "ds.search",
+      "name": "Task registration records",
+      "options": {
+        "query": "index=lab_persistence computer=\"MOHAMEDAHMED\" provider=\"Microsoft-Windows-Security-Auditing\" event_id=4698 | eval UTC=substr(utc,12,12), Creator='data.SubjectUserName', Task='data.TaskName' | table UTC Creator Task | sort 0 UTC",
+        "queryParameters": {
+          "earliest": "0",
+          "latest": "now"
+        }
+      }
+    },
+    "ds_panel_1": {
+      "type": "ds.search",
+      "name": "Task and control executions",
+      "options": {
+        "query": "index=lab_persistence computer=\"MOHAMEDAHMED\" provider=\"Microsoft-Windows-Sysmon\" event_id=1 data.CommandLine=\"*Write-Marker.ps1*\" | rex field=data.CommandLine \"-Case (?<Case>\\w+)\" | eval UTC=substr(utc,12,12), User='data.User', Parent='data.ParentImage', PID='data.ProcessId' | search Case IN (Task,Control) | table UTC Case User Parent PID | sort 0 UTC",
+        "queryParameters": {
+          "earliest": "0",
+          "latest": "now"
+        }
+      }
+    }
+  },
+  "layout": {
+    "globalInputs": [],
+    "layoutDefinitions": {
+      "layout_1": {
+        "type": "absolute",
+        "options": {
+          "width": 1440,
+          "height": 734,
+          "display": "auto-scale",
+          "backgroundColor": "#171D21"
+        },
+        "structure": [
+          {
+            "item": "panel_0",
+            "type": "block",
+            "position": {
+              "x": 24,
+              "y": 24,
+              "w": 1392,
+              "h": 330
+            }
+          },
+          {
+            "item": "panel_1",
+            "type": "block",
+            "position": {
+              "x": 24,
+              "y": 378,
+              "w": 1392,
+              "h": 330
+            }
+          }
+        ]
+      }
+    },
+    "tabs": {
+      "items": [
+        {
+          "label": "Investigation",
+          "layoutId": "layout_1"
+        }
+      ]
+    }
+  }
+}]]></definition></dashboard>
