@@ -1,3 +1,3 @@
-"_time",computer,"data.User","data.Image","data.ProcessGuid","data.TargetObject","data.Details"
-"2026-10-18 08:46:54.894 UTC",MOHAMEDAHMED,"MOHAMEDAHMED\mohamedahmed","C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe","{f4a656a0-8750-6ad4-bc00-000000000300}","HKU\S-1-5-21-3826013190-378737051-604361281-500\Software\Microsoft\Windows\CurrentVersion\Run\SOC-Lab-Run","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\Public\SOC-Lab\Write-Marker.ps1"" -Case Registry"
-"2026-10-18 08:47:15.460 UTC",MOHAMEDAHMED,"MOHAMEDAHMED\mohamedahmed","C:\Windows\system32\sihost.exe","{f4a656a0-8137-6ad4-2d00-000000000300}","HKU\S-1-5-21-3826013190-378737051-604361281-500\Software\Microsoft\Windows\CurrentVersion\RunNotification\SOC-Lab-Run","DWORD (0x00000001)"
+utc,data.TargetObject,data.Details,record_id
+2026-10-18T08:46:54.8941859Z,HKU\S-1-5-21-3826013190-378737051-604361281-500\Software\Microsoft\Windows\CurrentVersion\Run\SOC-Lab-Run,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\Public\SOC-Lab\Write-Marker.ps1"" -Case Registry",220
+2026-10-18T08:47:15.4606896Z,HKU\S-1-5-21-3826013190-378737051-604361281-500\Software\Microsoft\Windows\CurrentVersion\RunNotification\SOC-Lab-Run,DWORD (0x00000001),230

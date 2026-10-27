@@ -1,0 +1,5 @@
+index=lab_windows host=SOC-WS01 earliest="10/27/2026:15:54:00"
+EventCode IN (12,13) "SOC-Lab-GUI-Run"
+| dedup EventRecordID
+| sort 0 _time
+| table UtcTime EventCode User Image EventRecordID

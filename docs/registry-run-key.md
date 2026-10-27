@@ -1,25 +1,31 @@
-# Registry Run key
+# Registry Run value
 
-The value `SOC-Lab-Run` was added under `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`. It starts PowerShell with the marker script and `-Case Registry` at the next sign-in of the same local account.
+`SOC-Lab-GUI-Run` is a REG_SZ value under `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`. It was added using Registry Editor for the local lab account.
 
-![Run value and command](../images/run-key.png)
+![Run value in Registry Editor](../images/gui-run-configured.jpg)
 
-## Investigation
+Its [full value data](../evidence/gui-cases/run-value.json) starts Windows PowerShell with the marker script and `-Case Registry`.
 
-![Splunk registry changes and execution](../images/splunk-run-key.png)
+## Execution and investigation
 
-The [registry search](../splunk/searches/02-run-key-changes.spl) selects Sysmon event 13 and the case value name. It returned two rows, which refer to different objects: the Run command and a `RunNotification` DWORD. The second row is not another autostart command. The complete target path, value type and data are needed to distinguish them.
+After restarting Windows and signing in, PowerShell PID 3540 wrote the Registry marker. Its parent is Explorer, which is consistent with execution from the per-user logon location.
 
-The Registry marker first appears after the restart and new interactive sign-in. Sysmon record 523 shows PowerShell launched by `C:\Windows\explorer.exe` as `MOHAMEDAHMED\mohamedahmed` at `2026-10-18T09:01:28.0632257Z`.
+The [Run search](../splunk/searches/11-gui-run-changes.spl) uses the value name and Sysmon event codes 12 and 13. Its five results include the value's empty initial state, command data, deletion and RunNotification bookkeeping. Inspect TargetObject and Details in the [native XML](../evidence/gui-cases/events.xml); these records are not five executions.
 
-The configuration snapshot establishes the command in the value. The process event and resulting marker establish the observed execution after sign-in. Neither a writable path nor `ExecutionPolicy Bypass` is sufficient on its own to classify a command as malicious.
+![Registry change records in Splunk](../images/11-gui-run-changes-search.jpg)
 
-## Evidence
+The three [process rows](../evidence/search-results/12-gui-marker-processes.csv) contain two Task launches and the single Run-value launch. The marker file records its account, PID, UTC time and boot time.
 
-- [Registry configuration](../evidence/configuration/run-key.json)
-- [Registry search results](../evidence/search-results/02-run-key-changes.csv)
-- [Process results](../evidence/search-results/04-marker-execution.csv)
-- [Registry marker](../evidence/markers/Registry.jsonl)
-- [Native case events](../evidence/events/case-events.xml)
+## Removal
+
+The named value was deleted in Registry Editor. It remained absent after the verification restart, and the marker file hash did not change after the confirmed sign-in.
+
+![Named Run value removed](../images/gui-run-removed.jpg)
+
+## October 18 comparison
+
+The earlier `SOC-Lab-Run` experiment produced the same Explorer-to-PowerShell relationship. Original Sysmon record 523 and [Registry marker](../evidence/markers/Registry.jsonl) establish that execution. Its [two registry rows](../evidence/search-results/02-run-key-changes.csv) refer to the Run command and a RunNotification DWORD.
+
+A writable path or ExecutionPolicy Bypass is an investigation lead. The full value, executing account, process chain and output supply the context.
 
 ATT&CK: T1547.001 — Registry Run Keys / Startup Folder.

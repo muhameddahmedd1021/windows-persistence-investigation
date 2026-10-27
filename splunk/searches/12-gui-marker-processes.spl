@@ -1,0 +1,5 @@
+index=lab_windows host=SOC-WS01 earliest="10/27/2026:15:54:00"
+EventCode=1 CommandLine="*-File*Write-Marker.ps1*"
+| dedup EventRecordID
+| sort 0 _time
+| table UtcTime ProcessId ParentImage EventRecordID

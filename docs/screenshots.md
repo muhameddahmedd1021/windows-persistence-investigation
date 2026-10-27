@@ -1,44 +1,33 @@
 # Evidence gallery
 
-Windows captures show the case objects, execution markers and removal checks. The Splunk images are native PNG exports of the Dashboard Studio views.
+## Windows case interfaces
 
-## Splunk investigation overview
+![Windows task general](../images/gui-task-general.jpg)
 
-![Splunk investigation overview](../images/splunk-overview.png)
+![Windows task trigger](../images/gui-task-trigger.jpg)
 
-## Splunk Scheduled Task investigation
+![Windows task registered](../images/gui-task-registered.jpg)
 
-![Splunk Scheduled Task investigation](../images/splunk-scheduled-task.png)
+![Windows task action success](../images/gui-task-action-success.jpg)
 
-## Splunk Registry Run key investigation
+![Windows run configured](../images/gui-run-configured.jpg)
 
-![Splunk Registry Run key investigation](../images/splunk-run-key.png)
+![Windows run removed](../images/gui-run-removed.jpg)
 
-## Splunk WMI subscription investigation
+![Windows task removed](../images/gui-task-removed.jpg)
 
-![Splunk WMI subscription investigation](../images/splunk-wmi.png)
+## Splunk searches
 
-## Scheduled Task
+The [search guide](search-guide.md) contains all 13 queries and result images.
 
-![Scheduled Task](../images/scheduled-task.png)
+## Supporting views
 
-## Registry Run key
+![splunk overview](../images/splunk-overview.png)
 
-![Registry Run key](../images/run-key.png)
+![splunk scheduled task](../images/splunk-scheduled-task.png)
 
-## WMI subscription
+![splunk run key](../images/splunk-run-key.png)
 
-![WMI subscription](../images/wmi-subscription.png)
+![splunk wmi](../images/splunk-wmi.png)
 
-## Initial execution
-
-![Initial execution](../images/execution-before-restart.png)
-
-## After restart
-
-![After restart](../images/execution-after-restart.png)
-
-## Cleanup verification
-
-![Cleanup verification](../images/cleanup.png)
-
+![wmi subscription](../images/wmi-subscription.png)

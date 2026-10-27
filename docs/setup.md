@@ -1,69 +1,63 @@
-# Lab setup
+# Lab setup and reproduction
 
-The recorded run used Windows Server 2022 Standard Evaluation, Windows PowerShell 5.1, Sysmon 15.22 and Splunk 9.4.1 on Ubuntu 24.04. The Windows endpoint was standalone, with a local account. Use disposable lab VMs and take a clean snapshot before changing auditing.
+Use an isolated Windows Server lab with Windows PowerShell 5.1, Sysmon and Splunk. Work with a dedicated lab account and preserve existing evidence before reusing object names.
 
-## Windows logging
+## Logging and marker
 
-Download [Sysmon from Microsoft](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon), check its Microsoft signature, and install the included configuration from an elevated PowerShell session:
+Install [Microsoft Sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon) using [config/sysmon-lab.xml](../config/sysmon-lab.xml). Sysmon installation and configuration use its command-line interface. Check the Microsoft signature before installation.
 
-```powershell
-.\Sysmon64.exe -accepteula -i .\config\sysmon-lab.xml
-.\windows\Invoke-Lab.ps1 -Phase Prepare
+In Local Security Policy, enable successful Process Creation and Other Object Access Events auditing. In Local Group Policy, enable process command-line inclusion and PowerShell Script Block Logging. Enable the Task Scheduler Operational channel in Event Viewer. Check that Security 4698/4699, Sysmon process/registry/WMI events and the task execution channel are available before running cases.
+
+Using File Explorer, create `C:\Users\Public\SOC-Lab` and `C:\ProgramData\SocPersistenceLab\markers`. Copy [Write-Marker.ps1](../windows/Write-Marker.ps1) into the Public folder. Using Notepad, create `C:\ProgramData\SocPersistenceLab\state.json` with a run label:
+
+```json
+{"run_id":"persistence-lab"}
 ```
 
-The preparation phase backs up audit settings, enables process command lines and PowerShell Script Block Logging, enables the Task Scheduler channel, and copies the marker script. The Sysmon configuration collects the process, registry, WMI and marker-file events needed by the cases.
+The account running the cases needs write access to its lab marker folder. Inspect that folder's Security tab rather than assuming a scheduled action will have an elevated token. The published walkthrough used the existing local Administrator account.
 
-`C:\ProgramData\SocPersistenceLab` holds run state, marker records and snapshots. `C:\Users\Public\SOC-Lab` holds the case script. Existing case object names are refused rather than overwritten.
+## Scheduled Task
 
-## Register and test
+1. Open Task Scheduler and choose Create Task. Use `SOC-Lab-GUI-Task` and the current local lab account. Select Run only when user is logged on and leave highest privileges unchecked.
+2. Add an At log on trigger for that account.
+3. Add a Start a program action for `powershell.exe`, with the arguments shown in the [Task walkthrough](scheduled-task.md).
+4. Save the task. Select it and use Run once; inspect History, the resulting marker and native process records.
+
+## Run value
+
+Open Registry Editor at `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`. Create a String Value named `SOC-Lab-GUI-Run` and enter the command in [run-value.json](../evidence/gui-cases/run-value.json). Confirm the real value name, type and data before testing.
+
+Restart Windows and sign in with the same account. Compare the Task and Registry markers, parent processes and boot time. Do not count a configured trigger as a completed execution.
+
+## WMI subscription
+
+The original WMI case uses the three objects documented in [the WMI walkthrough](wmi-subscription.md). Its registration is performed with Windows PowerShell's WMI interface, one object at a time:
 
 ```powershell
-.\windows\Invoke-Lab.ps1 -Phase Install
-.\windows\Invoke-Lab.ps1 -Phase Trigger
-.\windows\Invoke-Lab.ps1 -Phase Snapshot -OutputDirectory C:\Lab\initial
+$exe="$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
+$filter=Set-WmiInstance -Namespace root\subscription -Class __EventFilter -Arguments @{Name='SOC-Lab-WMI';EventNamespace='root\cimv2';QueryLanguage='WQL';Query="SELECT * FROM Win32_ProcessStartTrace WHERE ProcessName = 'whoami.exe'"}
 ```
-
-`Install` registers the two tasks, HKCU Run value, and permanent WMI filter, consumer and binding. `Trigger` requests the Task and Control actions manually and starts `whoami.exe` for the WMI condition. It does not replace the logon test.
-
-Restart Windows and sign in as the same local account. Start `whoami.exe` again. Compare the marker records with process events and the new boot time, then export the next snapshot:
 
 ```powershell
-whoami.exe
-.\windows\Invoke-Lab.ps1 -Phase Snapshot -OutputDirectory C:\Lab\after-restart
+$consumer=Set-WmiInstance -Namespace root\subscription -Class CommandLineEventConsumer -Arguments @{Name='SOC-Lab-WMI';ExecutablePath=$exe;CommandLineTemplate=('"'+$exe+'" -NoProfile -ExecutionPolicy Bypass -File "C:\Users\Public\SOC-Lab\Write-Marker.ps1" -Case WMI')}
 ```
 
-The marker script appends one local JSON record with the case, run ID, time, identity, process IDs, hostname and boot time. It does not download a payload or contact another machine.
+```powershell
+Set-WmiInstance -Namespace root\subscription -Class __FilterToConsumerBinding -Arguments @{Filter=$filter;Consumer=$consumer}
+```
 
-## Splunk
+Run `whoami.exe` once to exercise the condition. Check the resulting WMI marker and WmiPrvSE-to-PowerShell chain. Restart and repeat the condition once to test persistence.
 
-Install `splunk/app` as the `soc_persistence` app in a lab Splunk instance before importing data. It defines the `lab_persistence` index, the `soc:windows:event` JSON sourcetype and four Dashboard Studio views: investigation overview, task registration and execution, registry changes, and WMI subscriptions.
+## Collect and search
 
-Copy one final cumulative `events.jsonl` export to the Splunk host and import it with that index and sourcetype. Importing every cumulative snapshot would duplicate earlier records. Check the parsed `_time` against the source `utc` field before investigation.
+The October 27 walkthrough forwards Windows XML into `lab_windows` using sourcetype `soc:windows:xml`. Searches 09–13 use the native field names available in that collection. In the recorded configuration, the Run-value search uses the name in the raw XML; full TargetObject and Details remain in the source records.
 
-The searches in `splunk/searches` select `computer="MOHAMEDAHMED"`. Change that filter and the dashboard filter when using a different endpoint name. Search over the time window of the recorded experiment, or use All time for a small isolated dataset.
+The included Splunk app defines `lab_persistence`, the JSON sourcetype `soc:windows:event` and four Dashboard Studio views for the October 18 collection. For a repository-only review, import [case-events.jsonl](../evidence/events/case-events.jsonl). It contains 30 selected records. Searches 01–07 match that selection; search 08 then reports the smaller imported collection rather than the original 2,281-record host dataset.
 
-For review using only this repository, import `evidence/events/case-events.jsonl`. It contains the 30 selected case records, not the complete original collection. Searches 01–07 can be compared with their included exports. The coverage search will describe the selected records rather than the original 2,281-record host collection.
+Use All time for these small recorded datasets and check event timestamps against source UTC. Preserve source channel and record IDs when exporting evidence. Import a cumulative capture only once to avoid duplicate events.
 
 ## Remove and verify
 
-```powershell
-.\windows\Invoke-Lab.ps1 -Phase Cleanup
-```
+Delete only the named test task in Task Scheduler and the named test value in Registry Editor. For WMI, remove its named binding first, then its consumer and filter through the WMI interface. Preserve object definitions and marker records.
 
-Save marker counts before the verification restart:
-
-```powershell
-$root='C:\ProgramData\SocPersistenceLab'
-Get-ChildItem "$root\markers\*.jsonl" | ForEach-Object {
-    [pscustomobject]@{case=$_.BaseName;count=@(Get-Content $_.FullName).Count}
-} | ConvertTo-Json | Set-Content "$root\snapshots\marker-counts-before-clean-restart.json"
-```
-
-Restart, sign in, run `whoami.exe` and allow time for the consumer action. This run observed the endpoint for 100 seconds after the condition. Save the new counts as `marker-counts-after-clean-restart.json`. Confirm both that the named objects are absent and that counts have not increased.
-
-```powershell
-.\windows\Invoke-Lab.ps1 -Phase Snapshot -OutputDirectory C:\Lab\final
-.\windows\Invoke-Lab.ps1 -Phase RestoreAuditing
-```
-
-Audit restoration applies the saved audit policy and the two saved registry settings. It does not uninstall Sysmon or reverse every monitoring change. Revert the clean VM snapshot when finished; do not use the restoration phase on a production endpoint.
+Restart, sign in and repeat the applicable trigger. Compare marker hashes and process events with the values recorded before removal. The [verification page](restart-and-cleanup.md) describes the observed results.

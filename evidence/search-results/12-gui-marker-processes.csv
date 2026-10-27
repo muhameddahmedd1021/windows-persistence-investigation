@@ -1,0 +1,4 @@
+UtcTime,ProcessId,ParentImage,EventRecordID
+2026-10-27 16:07:37.897,1136,C:\Windows\System32\svchost.exe,45482
+2026-10-27 17:11:39.226,4004,C:\Windows\System32\svchost.exe,46828
+2026-10-27 17:11:53.224,3540,C:\Windows\explorer.exe,46856

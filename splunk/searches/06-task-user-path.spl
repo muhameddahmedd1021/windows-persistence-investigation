@@ -1,4 +1,3 @@
-index=lab_persistence computer="MOHAMEDAHMED" provider="Microsoft-Windows-Security-Auditing" event_id=4698
-| eval action_xml=lower('data.TaskContent')
-| where match(action_xml, "(?i)users.{1,2}public.{1,2}soc-lab")
-| table _time computer data.SubjectUserName data.TaskName data.TaskContent
+index=lab_persistence computer=MOHAMEDAHMED provider="Microsoft-Windows-Security-Auditing" event_id=4698 data.TaskContent="*Users*Public*SOC-Lab*Write-Marker.ps1*" earliest=0
+| sort 0 utc
+| table utc data.SubjectUserName data.TaskName record_id

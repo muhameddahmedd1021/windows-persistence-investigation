@@ -1,7 +1,7 @@
-"_time",computer,"event_id","data.Operation","data.User","data.Name","data.Query","data.Destination","data.Consumer","data.Filter"
-"2026-10-18 08:46:56.914 UTC",MOHAMEDAHMED,19,Created,"MOHAMEDAHMED\mohamedahmed"," ""SOC-Lab-WMI"""," ""SELECT * FROM Win32_ProcessStartTrace WHERE ProcessName = 'whoami.exe'""",,,
-"2026-10-18 08:46:57.343 UTC",MOHAMEDAHMED,20,Created,"MOHAMEDAHMED\mohamedahmed"," ""SOC-Lab-WMI""",," ""\""C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\"" -NoProfile -ExecutionPolicy Bypass -File \""C:\\Users\\Public\\SOC-Lab\\Write-Marker.ps1\"" -Case WMI""",,
-"2026-10-18 08:46:58.076 UTC",MOHAMEDAHMED,21,Created,"MOHAMEDAHMED\mohamedahmed",,,," ""CommandLineEventConsumer.Name=\""SOC-Lab-WMI\"""""," ""__EventFilter.Name=\""SOC-Lab-WMI\"""""
-"2026-10-18 09:11:18.522 UTC",MOHAMEDAHMED,20,Deleted,"MOHAMEDAHMED\mohamedahmed"," ""SOC-Lab-WMI""",," ""\""C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\"" -NoProfile -ExecutionPolicy Bypass -File \""C:\\Users\\Public\\SOC-Lab\\Write-Marker.ps1\"" -Case WMI""",,
-"2026-10-18 09:11:18.559 UTC",MOHAMEDAHMED,19,Deleted,"MOHAMEDAHMED\mohamedahmed"," ""SOC-Lab-WMI"""," ""SELECT * FROM Win32_ProcessStartTrace WHERE ProcessName = 'whoami.exe'""",,,
-"2026-10-18 09:27:42.418 UTC",MOHAMEDAHMED,21,Deleted,"MOHAMEDAHMED\mohamedahmed",,,," ""CommandLineEventConsumer.Name=\""SOC-Lab-WMI\"""""," ""__EventFilter.Name=\""SOC-Lab-WMI\"""""
+utc,event_id,data.Operation,data.Name,data.Consumer,data.Filter,record_id
+2026-10-18T08:46:56.9146412Z,19,Created," ""SOC-Lab-WMI""", , ,221
+2026-10-18T08:46:57.3435543Z,20,Created," ""SOC-Lab-WMI""", , ,222
+2026-10-18T08:46:58.0766100Z,21,Created, ," ""CommandLineEventConsumer.Name=\""SOC-Lab-WMI\"""""," ""__EventFilter.Name=\""SOC-Lab-WMI\""""",223
+2026-10-18T09:11:18.5222890Z,20,Deleted," ""SOC-Lab-WMI""", , ,616
+2026-10-18T09:11:18.5593529Z,19,Deleted," ""SOC-Lab-WMI""", , ,617
+2026-10-18T09:27:42.4183030Z,21,Deleted, ," ""CommandLineEventConsumer.Name=\""SOC-Lab-WMI\"""""," ""__EventFilter.Name=\""SOC-Lab-WMI\""""",831

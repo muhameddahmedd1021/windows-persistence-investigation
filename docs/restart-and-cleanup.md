@@ -1,40 +1,33 @@
-# Restart and cleanup verification
+# Restart and cleanup
 
-Registration, execution and persistence were checked as separate stages. The marker script records the account, process IDs, UTC time and last boot time whenever a case action runs.
+The marker records the executing account, PID, parent PID, UTC time and Windows boot time. This distinguishes a saved configuration from an action that actually ran.
 
-## Initial execution
+## Task and Run walkthrough
 
-The Task and Control cases were requested manually first. Starting `whoami.exe` generated the WMI condition. The Run value required a new sign-in and therefore has no initial marker.
+| Stage | Task markers added | Registry markers added |
+| --- | ---: | ---: |
+| Manual Task Scheduler Run | 1 | 0 |
+| Restart and local sign-in | 1 | 1 |
+| Remove both objects, restart and sign in | 0 | 0 |
 
-![Initial marker records](../images/execution-before-restart.png)
+The initial boot was `12:28:41 UTC`; the execution test boot was `16:58:54 UTC` on October 27. The [three new marker records](../evidence/gui-cases/markers.jsonl) show the manual Task run followed by the Task and Registry logon launches.
 
-## After restart
+The Run value and task were removed through their Windows management interfaces.
 
-Windows restarted from the initial boot at `08:19:04.5000000Z` to a new boot at `08:58:23.5000000Z` on 18 October 2026. A new sign-in exercised the task and Run triggers; another `whoami.exe` exercised the WMI condition.
+![Run value absent](../images/gui-run-removed.jpg)
 
-![Case execution across boot times](../images/execution-after-restart.png)
+![Task absent from the library](../images/gui-task-removed.jpg)
 
-The [process search](../splunk/searches/04-marker-execution.spl) returned seven launches. Security 4688 provides a second process-creation source for comparison. PID correlation requires the host and time because a PID can be reused; Sysmon ProcessGuid gives a more precise process identifier.
+The verification boot was `18:02:42 UTC`. A successful local interactive sign-in is recorded in Security event 4624, record 42541. At `19:16:42 UTC`, more than five minutes after that sign-in, both named objects were absent, no marker process was running and all four marker-file hashes matched the values saved before the restart.
 
-## After removal
+The [cleanup search](../splunk/searches/13-gui-cleanup-process-check.spl) returns a count of 0 for matching process launches in that verification window.
 
-The two tasks, Run value, and WMI binding, consumer and filter were removed. Windows restarted again, with a boot time of `09:29:17.500000Z`, later than cleanup at `09:28:35.5177445Z`. Sign-in and the WMI condition were repeated, followed by a 100-second observation interval.
+![No marker processes after removal](../images/13-gui-cleanup-process-check-search.jpg)
 
-![Objects absent and counts unchanged](../images/cleanup.png)
+The [cleanup record](../evidence/gui-cases/cleanup.json) contains the observation times and before/after hashes. Existing marker records remain intact; removal stops future execution rather than deleting investigation evidence.
 
-| Case | Before verification restart | After repeated trigger |
-|---|---:|---:|
-| Task | 2 | 2 |
-| Registry | 1 | 1 |
-| WMI | 2 | 2 |
-| Control | 2 | 2 |
+## Original Task, Run and WMI experiment
 
-The named objects were absent and marker counts stayed unchanged. This supports successful removal of the tested mechanisms under these triggers. It is not a claim that every possible persistence location on the endpoint was examined.
+The October 18 experiment used the same marker design. Its [original records](../evidence/markers/) show Task, Registry, WMI and Control execution across boot times. After removal and a further restart, repeating the triggers left counts unchanged: Task 2, Registry 1, WMI 2 and Control 2.
 
-## Evidence
-
-- [Marker records](../evidence/markers)
-- [Sysmon process results](../evidence/search-results/04-marker-execution.csv)
-- [Security 4688 results](../evidence/search-results/07-process-creation-security.csv)
-- [Object checks](../evidence/configuration/cleanup.json)
-- [Counts before](../evidence/configuration/marker-counts-before-clean-restart.json) and [after](../evidence/configuration/marker-counts-after-clean-restart.json)
+The original [object inventory](../evidence/configuration/cleanup.json), [counts before](../evidence/configuration/marker-counts-before-clean-restart.json) and [counts after](../evidence/configuration/marker-counts-after-clean-restart.json) retain that verification. It describes the named mechanisms and triggers tested in the lab.

@@ -1,0 +1,5 @@
+index=lab_windows host=SOC-WS01 earliest="10/27/2026:15:54:00"
+Channel="Microsoft-Windows-TaskScheduler/Operational" TaskName="\\SOC-Lab-GUI-Task"
+| dedup EventRecordID
+| sort 0 _time
+| table EventCode TaskName ResultCode EventRecordID

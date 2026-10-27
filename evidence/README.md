@@ -1,33 +1,31 @@
 # Evidence index
 
-The recorded experiment ran on `MOHAMEDAHMED` on 18 October 2026. Timestamps in the event files and investigation text are UTC. The collection run ID is `c7342874-1113-4d4e-93df-277b6b2a4c0e`.
+| Collection | Source | Included evidence |
+| --- | --- | --- |
+| October 18 | `MOHAMEDAHMED`, standalone local-account lab | 30 selected native events, configuration snapshots and seven marker records |
+| October 27 | `SOC-WS01`, local Administrator on the domain lab endpoint | 28 native events, Task and Run configuration, three marker records and cleanup verification |
 
-## Included records
+All event times are UTC. Individual Windows XML events retain their source text, channel and record ID.
 
-| Location | Contents |
-|---|---|
-| [events/case-events.xml](events/case-events.xml) | 30 selected native XML event elements |
-| [events/case-events.jsonl](events/case-events.jsonl) | The same records in the collection's normalized JSON format |
-| [events/selection.json](events/selection.json) | Selection scope, source hashes and individual event identities |
-| [configuration](configuration) | Task XML, Run and WMI configuration, endpoint identity, and removal checks |
-| [markers](markers) | The seven marker records produced by Task, Registry, WMI and Control |
-| [search-results](search-results) | Eight exported Splunk search results |
+## October 18
 
-The source collection contains 2,314 records; the native `MOHAMEDAHMED` scope contains 2,281. The files here are a case selection, not a full EVTX or complete machine-history export. Each included XML Event element retains the original source text; `selection.json` records its SHA-256 and source record identity. Normalized JSON retains source fields while adding the collection run label. That label is not a native Windows event field.
+- [Original event XML](events/case-events.xml) and [normalized JSONL](events/case-events.jsonl)
+- [Selection and event hashes](events/selection.json)
+- [Configuration](configuration/) and [original marker files](markers/)
+- Searches 01–08 in [search-results](search-results/)
 
-The selection matches task registrations, marker process creation, marker file creation, the named Run value changes, and named WMI subscription operations. These are the records behind searches 01–07. The coverage CSV describes the larger host-scoped collection; its counts are not the number of case events included in this repository.
+The complete original collection has 2,314 records, of which 2,281 identify the native host as MOHAMEDAHMED. The coverage CSV describes that host-scoped collection. The repository's 30 events are the case selection, not a full machine-history export. The collection run label is metadata added during normalization, not a Windows event field.
 
-## Search exports
+## October 27
 
-| Search | Rows | Interpretation |
-|---|---:|---|
-| 01 — Task registration | 4 | Two case/control tasks and two Defender task registrations |
-| 02 — Run key changes | 2 | Run command and RunNotification DWORD |
-| 03 — WMI subscription | 6 | Creation and deletion operations for filter, consumer and binding |
-| 04 — Process execution | 7 | Marker launches recorded by Sysmon |
-| 05 — Marker files | 4 | File creation, not every appended marker |
-| 06 — Task Public path | 1 | Narrow action-path match |
-| 07 — Security process creation | 7 | Security 4688 records for the marker launches |
-| 08 — Coverage | 46 | Provider/event-ID groups in the host-scoped source collection |
+- [Native XML](gui-cases/events.xml) and [normalized JSONL](gui-cases/events.jsonl)
+- [Selection and individual event hashes](gui-cases/selection.json)
+- [Task XML](gui-cases/task.xml) and [Run value](gui-cases/run-value.json)
+- [New marker records](gui-cases/markers.jsonl) and [cleanup check](gui-cases/cleanup.json)
+- Searches 09–13 in [search-results](search-results/)
 
-`SHA256SUMS` at the repository root covers the published files. These checks establish file integrity, not whether a process or domain is trustworthy.
+The selected XML includes the confirmed interactive sign-in used for the final cleanup check. The three marker records are two Task executions and one Registry execution. The original marker files are preserved unchanged in the October 18 evidence folder.
+
+The [search guide](../docs/search-guide.md) links every query to its completed result table and screenshot. Windows images show the actual Task Scheduler and Registry Editor interfaces. The WMI object inspection uses the Windows PowerShell WMI interface.
+
+`SHA256SUMS` covers the published files.

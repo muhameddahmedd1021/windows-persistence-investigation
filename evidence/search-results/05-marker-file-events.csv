@@ -1,5 +1,5 @@
-"_time",computer,"data.ProcessGuid","data.ProcessId","data.Image","data.TargetFilename"
-"2026-10-18 08:48:51.997 UTC",MOHAMEDAHMED,"{f4a656a0-87ca-6ad4-cb00-000000000300}",2996,"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe","C:\ProgramData\SocPersistenceLab\markers\WMI.jsonl"
-"2026-10-18 08:49:31.766 UTC",MOHAMEDAHMED,"{f4a656a0-87c6-6ad4-c700-000000000300}",4064,"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe","C:\ProgramData\SocPersistenceLab\markers\Control.jsonl"
-"2026-10-18 08:49:40.830 UTC",MOHAMEDAHMED,"{f4a656a0-87c6-6ad4-c500-000000000300}",2872,"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe","C:\ProgramData\SocPersistenceLab\markers\Task.jsonl"
-"2026-10-18 09:03:04.241 UTC",MOHAMEDAHMED,"{f4a656a0-8ae7-6ad4-5200-000000000400}",2608,"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe","C:\ProgramData\SocPersistenceLab\markers\Registry.jsonl"
+utc,data.ProcessId,data.TargetFilename,record_id
+2026-10-18T08:48:51.9971815Z,2996,C:\ProgramData\SocPersistenceLab\markers\WMI.jsonl,251
+2026-10-18T08:49:31.7660605Z,4064,C:\ProgramData\SocPersistenceLab\markers\Control.jsonl,255
+2026-10-18T08:49:40.8308960Z,2872,C:\ProgramData\SocPersistenceLab\markers\Task.jsonl,258
+2026-10-18T09:03:04.2412826Z,2608,C:\ProgramData\SocPersistenceLab\markers\Registry.jsonl,539

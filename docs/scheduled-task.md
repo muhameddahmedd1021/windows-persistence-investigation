@@ -1,31 +1,31 @@
 # Scheduled Task
 
-The task case, `SOC-Lab-Task`, launches PowerShell at sign-in for `mohamedahmed`. Its action points to `C:\Users\Public\SOC-Lab\Write-Marker.ps1 -Case Task`. A second task, `SOC-Lab-Control`, uses the ProgramData copy of the marker script as a known comparison.
+`SOC-Lab-GUI-Task` runs the marker script at sign-in for `SOC-WS01\Administrator`. It uses an interactive token, with the highest-privileges option left unchecked.
 
-## Registration
+![Task principal and settings](../images/gui-task-general.jpg)
 
-![Task action and execution principal](../images/scheduled-task.png)
+![Specific logon trigger](../images/gui-task-trigger.jpg)
 
-Security event 4698 and [the task XML](../evidence/configuration/task.xml) provide the task name, trigger, principal and action. The task was registered through PowerShell APIs; an investigation cannot depend on finding `schtasks.exe` in every task-creation chain.
+The action starts `powershell.exe` with:
 
-The configured run level is `Limited`. That setting alone is not a measurement of the resulting process integrity level.
+```text
+-NoProfile -ExecutionPolicy Bypass -File "C:\Users\Public\SOC-Lab\Write-Marker.ps1" -Case Task
+```
 
-## Search and execution
+The complete [task XML](../evidence/gui-cases/task.xml) retains its action, principal, trigger and conditions.
 
-![Splunk task registration and execution](../images/splunk-scheduled-task.png)
+## Execution
 
-The [registration search](../splunk/searches/01-task-registration.spl) returned four rows: the two lab tasks and two Windows Defender Scheduled Scan registrations. The Defender rows specify `MpCmdRun.exe` in their action XML; a familiar task name alone is insufficient to establish trust.
+The task was requested once using Task Scheduler's Run action. It returned 0 and wrote a marker for PID 1136. After a restart and sign-in, the logon trigger produced PID 4004 and another marker. Both executions completed successfully in the task history.
 
-The [Public-path search](../splunk/searches/06-task-user-path.spl) returned only the case task. Its narrower result set is expected because the control task uses a different action path.
+![Task execution history](../images/gui-task-action-success.jpg)
 
-Sysmon process records 241 and 480 show the two Task marker launches. Their observed parent is `C:\Windows\System32\svchost.exe`. Correlating the command, case, account, process identifiers and marker time links the executions to the configured action. A registration record by itself does not establish execution.
+The [lifecycle search](../splunk/searches/09-gui-task-lifecycle.spl) returns 14 records. The two event-201 rows contain return code 0. Security [4698 and 4699](../evidence/search-results/10-gui-task-security.csv) provide creation and deletion evidence.
 
-## Evidence
+## Action-path comparison
 
-- [Broad search results](../evidence/search-results/01-task-registration.csv)
-- [Public-path search results](../evidence/search-results/06-task-user-path.csv)
-- [Process results](../evidence/search-results/04-marker-execution.csv)
-- [Task marker records](../evidence/markers/Task.jsonl)
-- [Native case events](../evidence/events/case-events.xml)
+In the October 18 dataset, `SOC-Lab-Task` uses the Public copy of the marker script, while `SOC-Lab-Control` uses the ProgramData copy. The [broad registration search](../splunk/searches/01-task-registration.spl) returns both lab tasks and two Defender registrations. The [Public-path search](../splunk/searches/06-task-user-path.spl) returns one row.
+
+The narrower match changes coverage; it does not establish that the other paths are safe. The original tasks were registered through PowerShell APIs, so an investigation should not depend on finding schtasks.exe in every creation chain. Original Sysmon records 241 and 480 identify the Task executions and their svchost.exe parent.
 
 ATT&CK: T1053.005 — Scheduled Task.

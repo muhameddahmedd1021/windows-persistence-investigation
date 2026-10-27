@@ -1,0 +1,173 @@
+{
+  "computer": "SOC-WS01",
+  "records": [
+    {
+      "channel": "Microsoft-Windows-TaskScheduler/Operational",
+      "record_id": 3916,
+      "event_id": 106,
+      "sha256": "fb428bd8dfbb231b2902cadc8b92ffe28c0208190addb792b32625dd8157b51f"
+    },
+    {
+      "channel": "Security",
+      "record_id": 39476,
+      "event_id": 4698,
+      "sha256": "d8104de62a42b68b9a1d7e35e3492b3b5446b5498139b8bc97a65fe566ac21db"
+    },
+    {
+      "channel": "Security",
+      "record_id": 39610,
+      "event_id": 4688,
+      "sha256": "bc92211b5aa9456261e9794120da5f8d3ad133c954a4ff9081d33ef9469454c8"
+    },
+    {
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 45482,
+      "event_id": 1,
+      "sha256": "68e7a35db4d49f8eb3320e800077b64573a65072c5d2c2266f9ac410adab8ad6"
+    },
+    {
+      "channel": "Microsoft-Windows-TaskScheduler/Operational",
+      "record_id": 3917,
+      "event_id": 129,
+      "sha256": "51adb21cf35f67e72ebffa4100cf41fb21b63fdd067522ecebb3e2540f51a2ed"
+    },
+    {
+      "channel": "Microsoft-Windows-TaskScheduler/Operational",
+      "record_id": 3918,
+      "event_id": 100,
+      "sha256": "0d4e7c25b98620a08c2ac3da916492686f6f4485d18a95546e5bdda28f5fb9fc"
+    },
+    {
+      "channel": "Microsoft-Windows-TaskScheduler/Operational",
+      "record_id": 3919,
+      "event_id": 200,
+      "sha256": "92a5d9c59d58d41d552d384dfcc829eafc574b42e65bb19863f57798b17b55cb"
+    },
+    {
+      "channel": "Microsoft-Windows-TaskScheduler/Operational",
+      "record_id": 3920,
+      "event_id": 110,
+      "sha256": "eb2d30a22a962f5ea9971ab067f98863c9e815c71c8e372f42b2628bb6cc29b5"
+    },
+    {
+      "channel": "Microsoft-Windows-TaskScheduler/Operational",
+      "record_id": 3921,
+      "event_id": 201,
+      "sha256": "935172563a3d05b0672b413a4d545214a2754ed93357235ac3969ae58ec67c43"
+    },
+    {
+      "channel": "Microsoft-Windows-TaskScheduler/Operational",
+      "record_id": 3922,
+      "event_id": 102,
+      "sha256": "18cfeb1334e9bf15af4e6a98b5b8b55ef1c68c9cc6e405682e3c3a20a41d59d3"
+    },
+    {
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 45816,
+      "event_id": 13,
+      "sha256": "c0a451a81d20ddf8545af9ab9c22665912d807d62b560559af674d3a170c6192"
+    },
+    {
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 45983,
+      "event_id": 13,
+      "sha256": "2174d02d7221467e0bc94a919770df2519c65b27bb7e0f02426e8e9139ce6492"
+    },
+    {
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 45985,
+      "event_id": 13,
+      "sha256": "62157003ed6893a9af52d1c9065c553a5ee21e9058a8b88623622d8f8ab3b9ba"
+    },
+    {
+      "channel": "Microsoft-Windows-TaskScheduler/Operational",
+      "record_id": 4162,
+      "event_id": 119,
+      "sha256": "212da18f870363376ac6397e3ac45e7755d71c9bafc804317bff37aaa31d9ff1"
+    },
+    {
+      "channel": "Security",
+      "record_id": 40930,
+      "event_id": 4688,
+      "sha256": "58029a2113d9cd94edf87ebde345db724607bfc9b8fcb95b8a44ff48e5efd60d"
+    },
+    {
+      "channel": "Microsoft-Windows-TaskScheduler/Operational",
+      "record_id": 4167,
+      "event_id": 129,
+      "sha256": "f85a89cee91cb2147f5f5e19118e488edc360157a57c6b83568ad264ca2f3800"
+    },
+    {
+      "channel": "Microsoft-Windows-TaskScheduler/Operational",
+      "record_id": 4168,
+      "event_id": 100,
+      "sha256": "0c52aa8be852ad75a746532f6ac967af1bdf54c435675c27e90c14310de5a735"
+    },
+    {
+      "channel": "Microsoft-Windows-TaskScheduler/Operational",
+      "record_id": 4169,
+      "event_id": 200,
+      "sha256": "c5c6493b3db268d4ae6d5ea37197113ed5168739fe434fa5c413a289200e876b"
+    },
+    {
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 46828,
+      "event_id": 1,
+      "sha256": "7e136b3cc4060ab99eb7ef151f4aca2c5abc32c2dac385b63f7df40964ebacb3"
+    },
+    {
+      "channel": "Microsoft-Windows-TaskScheduler/Operational",
+      "record_id": 4184,
+      "event_id": 201,
+      "sha256": "a6972c99ba480b141bdee36a571756acb7062c8b98e41d7a0c817ad2580dfb4d"
+    },
+    {
+      "channel": "Microsoft-Windows-TaskScheduler/Operational",
+      "record_id": 4185,
+      "event_id": 102,
+      "sha256": "eb6ba9aaa39125781007881ce29d73b974a7b3af8c0d1541e52b71f17e93848d"
+    },
+    {
+      "channel": "Security",
+      "record_id": 40962,
+      "event_id": 4688,
+      "sha256": "7962c18f88f33eb9dd33a18afa63780d78fafeddedeca3a928176811e45d23ad"
+    },
+    {
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 46856,
+      "event_id": 1,
+      "sha256": "45f6a879a2c62e319c552754c8689676c3d1219e52c337dff313a564b570f454"
+    },
+    {
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 47103,
+      "event_id": 12,
+      "sha256": "bf2362b1cddd947dc5fa4e2b594639c5c2f6cf9822347e8f3b84a52090b28d61"
+    },
+    {
+      "channel": "Microsoft-Windows-Sysmon/Operational",
+      "record_id": 47198,
+      "event_id": 12,
+      "sha256": "55fa31c3b9a5099826508468e4d3fa0a91edfe778037a1a26037fc69d3f196fc"
+    },
+    {
+      "channel": "Microsoft-Windows-TaskScheduler/Operational",
+      "record_id": 4214,
+      "event_id": 141,
+      "sha256": "01703a10d509368da1b0ddde9c4216fcb90ff52483f1a243d0388a58bd6d64b8"
+    },
+    {
+      "channel": "Security",
+      "record_id": 41295,
+      "event_id": 4699,
+      "sha256": "021b48211fff52c659644ba137434282af13c5eb389676b49250e913d50690a4"
+    },
+    {
+      "channel": "Security",
+      "record_id": 42541,
+      "event_id": 4624,
+      "sha256": "d132b60a92fb2bdfb8d2d7e3d205b824e0a7ce58f5a7da0d597abad6a37acab0"
+    }
+  ]
+}

@@ -1,4 +1,2 @@
-index=lab_persistence computer="MOHAMEDAHMED"
-| stats count min(_time) as first_event max(_time) as last_event by computer provider event_id
-| convert ctime(first_event) ctime(last_event)
-| sort provider event_id
+index=lab_persistence computer=MOHAMEDAHMED earliest=0
+| stats count by provider event_id

@@ -1,47 +1,47 @@
-computer,provider,"event_id",count,"first_event","last_event"
-MOHAMEDAHMED,"Microsoft-Windows-PowerShell",4100,64,"10/18/2026 08:48:54.442214","10/18/2026 09:06:53.773631"
-MOHAMEDAHMED,"Microsoft-Windows-PowerShell",4103,12,"10/18/2026 08:57:34.060002","10/18/2026 09:06:49.515555"
-MOHAMEDAHMED,"Microsoft-Windows-PowerShell",4104,352,"10/18/2026 08:46:25.016906","10/18/2026 09:35:07.080697"
-MOHAMEDAHMED,"Microsoft-Windows-PowerShell",40961,16,"10/18/2026 08:46:09.227030","10/18/2026 09:32:02.624760"
-MOHAMEDAHMED,"Microsoft-Windows-PowerShell",40962,16,"10/18/2026 08:46:17.024709","10/18/2026 09:32:26.574360"
-MOHAMEDAHMED,"Microsoft-Windows-PowerShell",53504,16,"10/18/2026 08:46:12.370518","10/18/2026 09:32:13.820531"
-MOHAMEDAHMED,"Microsoft-Windows-Security-Auditing",4624,69,"10/18/2026 08:47:30.720737","10/18/2026 09:33:18.568704"
-MOHAMEDAHMED,"Microsoft-Windows-Security-Auditing",4688,414,"10/18/2026 08:46:02.434302","10/18/2026 09:34:01.900147"
-MOHAMEDAHMED,"Microsoft-Windows-Security-Auditing",4698,4,"10/18/2026 08:46:53.987813","10/18/2026 09:27:30.683643"
-MOHAMEDAHMED,"Microsoft-Windows-Security-Auditing",4699,4,"10/18/2026 09:10:08.934440","10/18/2026 09:27:30.383828"
-MOHAMEDAHMED,"Microsoft-Windows-Security-Auditing",4702,14,"10/18/2026 09:00:54.435823","10/18/2026 09:33:10.527473"
-MOHAMEDAHMED,"Microsoft-Windows-Sysmon",1,413,"10/18/2026 08:46:01.873170","10/18/2026 09:34:01.946173"
-MOHAMEDAHMED,"Microsoft-Windows-Sysmon",4,3,"10/18/2026 08:59:42.955101","10/18/2026 09:30:24.256019"
-MOHAMEDAHMED,"Microsoft-Windows-Sysmon",5,335,"10/18/2026 08:46:02.136923","10/18/2026 09:34:32.444089"
-MOHAMEDAHMED,"Microsoft-Windows-Sysmon",11,28,"10/18/2026 08:46:01.409848","10/18/2026 09:28:35.266486"
-MOHAMEDAHMED,"Microsoft-Windows-Sysmon",12,30,"10/18/2026 08:47:14.953500","10/18/2026 09:35:53.472778"
-MOHAMEDAHMED,"Microsoft-Windows-Sysmon",13,3,"10/18/2026 08:46:08.480944","10/18/2026 08:47:15.460689"
-MOHAMEDAHMED,"Microsoft-Windows-Sysmon",19,2,"10/18/2026 08:46:56.914641","10/18/2026 09:11:18.559352"
-MOHAMEDAHMED,"Microsoft-Windows-Sysmon",20,2,"10/18/2026 08:46:57.343554","10/18/2026 09:11:18.522289"
-MOHAMEDAHMED,"Microsoft-Windows-Sysmon",21,2,"10/18/2026 08:46:58.076610","10/18/2026 09:27:42.418303"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",100,70,"10/18/2026 08:48:06.509432","10/18/2026 09:36:43.182953"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",102,65,"10/18/2026 08:49:34.609800","10/18/2026 09:36:44.254275"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",103,6,"10/18/2026 08:57:52.007158","10/18/2026 09:28:48.821627"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",106,4,"10/18/2026 08:46:53.982322","10/18/2026 09:27:30.679656"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",107,6,"10/18/2026 09:05:41.288471","10/18/2026 09:36:43.138286"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",108,1,"10/18/2026 08:59:09.330703","10/18/2026 08:59:09.330703"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",110,5,"10/18/2026 08:48:06.513367","10/18/2026 09:28:41.539149"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",111,2,"10/18/2026 08:57:54.595624","10/18/2026 08:57:54.599478"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",118,15,"10/18/2026 08:59:04.423110","10/18/2026 09:32:56.270812"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",119,29,"10/18/2026 08:59:55.223088","10/18/2026 09:31:12.187539"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",129,53,"10/18/2026 08:48:06.505658","10/18/2026 09:36:43.180901"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",140,16,"10/18/2026 09:00:54.431755","10/18/2026 09:33:10.525250"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",141,4,"10/18/2026 09:10:08.927160","10/18/2026 09:27:30.379594"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",200,70,"10/18/2026 08:48:06.509582","10/18/2026 09:36:43.183006"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",201,65,"10/18/2026 08:49:34.606170","10/18/2026 09:36:44.252276"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",202,6,"10/18/2026 08:57:52.006968","10/18/2026 09:28:48.821590"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",325,5,"10/18/2026 08:48:06.318451","10/18/2026 09:28:41.534850"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",329,1,"10/18/2026 09:19:28.876200","10/18/2026 09:19:28.876200"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",400,3,"10/18/2026 08:59:03.050118","10/18/2026 09:29:55.583396"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",402,3,"10/18/2026 08:57:56.980239","10/18/2026 09:28:51.891195"
-MOHAMEDAHMED,"Microsoft-Windows-TaskScheduler",700,3,"10/18/2026 08:59:01.284853","10/18/2026 09:29:53.708589"
-MOHAMEDAHMED,"Microsoft-Windows-WMI-Activity",5857,28,"10/18/2026 08:46:35.060501","10/18/2026 09:37:37.850905"
-MOHAMEDAHMED,"Microsoft-Windows-WMI-Activity",5858,9,"10/18/2026 09:02:58.895428","10/18/2026 09:33:01.600439"
-MOHAMEDAHMED,"Microsoft-Windows-WMI-Activity",5859,5,"10/18/2026 08:46:58.027822","10/18/2026 09:30:23.447543"
-MOHAMEDAHMED,"Microsoft-Windows-WMI-Activity",5860,3,"10/18/2026 08:59:35.722577","10/18/2026 09:30:23.349644"
-MOHAMEDAHMED,"Microsoft-Windows-WMI-Activity",5861,5,"10/18/2026 08:46:57.725845","10/18/2026 09:30:23.077202"
+provider,event_id,count
+Microsoft-Windows-PowerShell,40961,16
+Microsoft-Windows-PowerShell,40962,16
+Microsoft-Windows-PowerShell,4100,64
+Microsoft-Windows-PowerShell,4103,12
+Microsoft-Windows-PowerShell,4104,352
+Microsoft-Windows-PowerShell,53504,16
+Microsoft-Windows-Security-Auditing,4624,69
+Microsoft-Windows-Security-Auditing,4688,414
+Microsoft-Windows-Security-Auditing,4698,4
+Microsoft-Windows-Security-Auditing,4699,4
+Microsoft-Windows-Security-Auditing,4702,14
+Microsoft-Windows-Sysmon,1,413
+Microsoft-Windows-Sysmon,11,28
+Microsoft-Windows-Sysmon,12,30
+Microsoft-Windows-Sysmon,13,3
+Microsoft-Windows-Sysmon,19,2
+Microsoft-Windows-Sysmon,20,2
+Microsoft-Windows-Sysmon,21,2
+Microsoft-Windows-Sysmon,4,3
+Microsoft-Windows-Sysmon,5,335
+Microsoft-Windows-TaskScheduler,100,70
+Microsoft-Windows-TaskScheduler,102,65
+Microsoft-Windows-TaskScheduler,103,6
+Microsoft-Windows-TaskScheduler,106,4
+Microsoft-Windows-TaskScheduler,107,6
+Microsoft-Windows-TaskScheduler,108,1
+Microsoft-Windows-TaskScheduler,110,5
+Microsoft-Windows-TaskScheduler,111,2
+Microsoft-Windows-TaskScheduler,118,15
+Microsoft-Windows-TaskScheduler,119,29
+Microsoft-Windows-TaskScheduler,129,53
+Microsoft-Windows-TaskScheduler,140,16
+Microsoft-Windows-TaskScheduler,141,4
+Microsoft-Windows-TaskScheduler,200,70
+Microsoft-Windows-TaskScheduler,201,65
+Microsoft-Windows-TaskScheduler,202,6
+Microsoft-Windows-TaskScheduler,325,5
+Microsoft-Windows-TaskScheduler,329,1
+Microsoft-Windows-TaskScheduler,400,3
+Microsoft-Windows-TaskScheduler,402,3
+Microsoft-Windows-TaskScheduler,700,3
+Microsoft-Windows-WMI-Activity,5857,28
+Microsoft-Windows-WMI-Activity,5858,9
+Microsoft-Windows-WMI-Activity,5859,5
+Microsoft-Windows-WMI-Activity,5860,3
+Microsoft-Windows-WMI-Activity,5861,5

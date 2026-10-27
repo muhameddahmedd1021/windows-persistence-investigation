@@ -1,0 +1,6 @@
+{
+  "path": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+  "name": "SOC-Lab-GUI-Run",
+  "type": "REG_SZ",
+  "data": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\Public\\SOC-Lab\\Write-Marker.ps1\" -Case Registry"
+}
