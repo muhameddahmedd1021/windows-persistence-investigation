@@ -31,16 +31,22 @@ Restart Windows and sign in with the same account. Compare the Task and Registry
 
 ## WMI subscription
 
-The original WMI case uses the three objects documented in [the WMI walkthrough](wmi-subscription.md). Its registration is performed with Windows PowerShell's WMI interface, one object at a time:
+The recorded WMI case uses the three objects documented in [the WMI walkthrough](wmi-subscription.md). To reproduce that configuration, open Windows PowerShell as a lab administrator and create the filter, consumer and binding with the commands below.
+
+First, select Windows PowerShell as the action executable and create a filter that watches for `whoami.exe`:
 
 ```powershell
 $exe="$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
 $filter=Set-WmiInstance -Namespace root\subscription -Class __EventFilter -Arguments @{Name='SOC-Lab-WMI';EventNamespace='root\cimv2';QueryLanguage='WQL';Query="SELECT * FROM Win32_ProcessStartTrace WHERE ProcessName = 'whoami.exe'"}
 ```
 
+Next, create the consumer. Its action runs the local marker script with the WMI case label:
+
 ```powershell
 $consumer=Set-WmiInstance -Namespace root\subscription -Class CommandLineEventConsumer -Arguments @{Name='SOC-Lab-WMI';ExecutablePath=$exe;CommandLineTemplate=('"'+$exe+'" -NoProfile -ExecutionPolicy Bypass -File "C:\Users\Public\SOC-Lab\Write-Marker.ps1" -Case WMI')}
 ```
+
+Finally, bind that filter to that consumer:
 
 ```powershell
 Set-WmiInstance -Namespace root\subscription -Class __FilterToConsumerBinding -Arguments @{Filter=$filter;Consumer=$consumer}
