@@ -14,6 +14,8 @@ Investigating Scheduled Tasks, Registry Run values and permanent WMI subscriptio
 
 The Task Scheduler and Registry Editor walkthroughs show creation, execution after a restart and removal. The WMI case follows its filter, consumer and binding through the recorded event history.
 
+These are three separate persistence experiments. The investigation checks the configured action, the account that creates it, the process that later runs it, and whether the action continues after a restart.
+
 ![Run value in Registry Editor](images/gui-run-configured.jpg)
 
 ## Verification
@@ -25,6 +27,14 @@ On `SOC-WS01`, the scheduled task returned code 0 for a manual run and the next 
 Splunk results are matched to the original Windows record IDs. Each saved search answers one question: registration, value changes, process execution or cleanup.
 
 ![Recorded marker processes in Splunk](images/12-gui-marker-processes-search.jpg)
+
+## Investigation outcome
+
+**The configured persistence mechanisms executed the marker script, and their removal was verified.** Task Scheduler ran it manually and at sign-in. The Run value launched it through Explorer at sign-in. The WMI subscription launched it through WmiPrvSE as SYSTEM when the `whoami.exe` condition occurred, including after a restart.
+
+The marker records the account, PID, parent PID, computer, execution time and boot time. It connects the configured action with an observed execution. Native Windows events provide the registration, process and removal evidence; the marker script does not create the persistence objects.
+
+The recorded cleanup removed the named lab objects. The relevant triggers were checked again and the retained marker evidence supported the absence of further case execution. For an unrecognized entry in an incident, preserve its full definition and associated script, identify its owner and purpose, and coordinate removal and verification through the response process.
 
 ## Walkthrough
 
